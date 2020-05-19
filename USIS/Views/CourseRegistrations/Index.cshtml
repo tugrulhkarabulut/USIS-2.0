@@ -1,0 +1,47 @@
+﻿@model IEnumerable<USIS.Models.CourseRegistration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.course.courseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.course.courseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.lecturer.lecturerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.course.courseCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.course.courseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.lecturer.lecturerName)
+        </td>
+    </tr>
+}
+
+</table>

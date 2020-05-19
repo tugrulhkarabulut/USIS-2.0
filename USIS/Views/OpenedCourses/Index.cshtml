@@ -1,0 +1,69 @@
+﻿@model IEnumerable<USIS.Models.OpenedCourse>
+
+@{
+    ViewBag.Title = "Opened Courses - " + ViewBag.student.department.departmentName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="alert" role="alert" id="takeCourseAlert">
+    A simple primary alert—check it out!
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.course.courseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course.courseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lecturer.lecturerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.semester)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.capacity)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.courseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.courseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lecturer.lecturerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.semester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+                <span id="#currentCapacity">
+                    (@Html.DisplayFor(model => item.courseRegistrations.Count))
+                </span>
+            </td>
+            <td>
+                <a href="#" class="takeCourseBtn" data-openedCourseID="@item.id" data-studentID="@ViewBag.student.id">Take the course</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/customScripts/takeCourse.js")
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <form action="/login/" method="post">
+        <div class="form-horizontal">
+            <h4>Login</h4>
+            <hr />
+            @Html.RenderFlashMessages()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label for="studentNumber" class="control-label">Student Number</label>
+                    <input type="text" name="studentNumber" id="studentNumber" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
