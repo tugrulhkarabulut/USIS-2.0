@@ -7,6 +7,9 @@
 
 <h2>Index</h2>
 
+<div class="alert" id="dropCourseAlert">
+</div>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -27,21 +30,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.openedCourse.course.courseCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.openedCourse.course.courseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.grade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.openedCourse.lecturer.lecturerName)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr id="registration-@item.id">
+            <td>
+                @Html.DisplayFor(modelItem => item.openedCourse.course.courseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.openedCourse.course.courseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.openedCourse.lecturer.lecturerName)
+            </td>
+            <td>
+                @if (item.grade == null)
+                {
+                    <button class="btn btn-secondary dropCourseBtn" data-courseRegistrationID="@item.id">Drop the Course</button>
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/customScripts/dropCourse.js")
+}
+

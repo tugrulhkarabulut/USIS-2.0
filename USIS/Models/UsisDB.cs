@@ -21,5 +21,7 @@ namespace USIS.Models
         public System.Data.Entity.DbSet<USIS.Models.CourseRegistration> CourseRegistrations { get; set; }
 
         public System.Data.Entity.DbSet<USIS.Models.Lecturer> Lecturers { get; set; }
+
+        public System.Data.Entity.DbSet<USIS.Models.Log> Logs { get; set; }
     }
 }

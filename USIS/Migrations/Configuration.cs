@@ -38,13 +38,13 @@
 
             var courses = new List<Course>
             {
-                new Course { courseName = "Object Oriented Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1011" },
-                new Course { courseName = "Data Communication", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2011" },
-                new Course { courseName = "Algorithms and Data Structures", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2022" },
-                new Course { courseName = "Calculus 1", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1012" },
-                new Course { courseName = "Numerical Analysis", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2022" },
-                new Course { courseName = "Electronic Circuits", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2032" },
-                new Course { courseName = "Web Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2032" },
+                new Course { courseName = "Object Oriented Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1011", year = 2, semester = 0 },
+                new Course { courseName = "Data Communication", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2011", year = 1, semester = 1 },
+                new Course { courseName = "Algorithms and Data Structures", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2022", year = 1, semester = 0 },
+                new Course { courseName = "Calculus 1", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1012", year = 3, semester = 1 },
+                new Course { courseName = "Numerical Analysis", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2022", year = 2, semester = 1 },
+                new Course { courseName = "Electronic Circuits", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2032", year = 4, semester = 1 },
+                new Course { courseName = "Web Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2032", year = 3, semester = 0 },
 
             };
 
@@ -63,10 +63,10 @@
 
             var students = new List<Student>
             {
-                new Student { studentNumber = 17058055, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2017, gpa = 3.49, studentName = "Tuğrul Hasan Karabulut" },
-                new Student { studentNumber = 16012001, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2016, gpa = 3.70, studentName = "Ayşe Duman" },
-                new Student { studentNumber = 14022001, departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, startYear = 2014, gpa = 2.54, studentName = "Ali Veli" },
-                new Student { studentNumber = 18002009, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2018, gpa = 3.12, studentName = "Merve Soyadı" },
+                new Student { studentNumber = 17058055, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2017, gpa = 3.49, studentName = "Tuğrul Hasan Karabulut", lastActivity = DateTime.Now },
+                new Student { studentNumber = 16012001, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2016, gpa = 3.70, studentName = "Ayşe Duman", lastActivity = DateTime.Now },
+                new Student { studentNumber = 14022001, departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, startYear = 2014, gpa = 2.54, studentName = "Ali Veli", lastActivity = DateTime.Now },
+                new Student { studentNumber = 18002009, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2018, gpa = 3.12, studentName = "Merve Soyadı", lastActivity = DateTime.Now },
             };
 
             students.ForEach(d => context.Students.AddOrUpdate(d));
@@ -77,7 +77,7 @@
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "MTM1011").id, year = 2020, semester = "Spring", capacity = 50, lecturerID = context.Lecturers.First().id },
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "BLM2011").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id + 1 },
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "MTM2022").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id + 1 },
-                new OpenedCourse { courseID = courses.Single(c => c.courseCode == "MTM1012").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id + 2 },
+                new OpenedCourse { courseID = courses.Single(c => c.courseCode == "MTM1012").id, year = 2020, semester = "Spring", capacity = 2, lecturerID = context.Lecturers.First().id + 2 },
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "BLM2022").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id + 2 },
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "BLM2032").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id + 1 },
                 new OpenedCourse { courseID = courses.Single(c => c.courseCode == "MTM2032").id, year = 2020, semester = "Spring", capacity = 75, lecturerID = context.Lecturers.First().id },
@@ -88,14 +88,15 @@
 
             var courseRegistrations = new List<CourseRegistration>
             {
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Tuğrul Hasan Karabulut").id, openedCourseID = context.OpenedCourses.First().id, grade = "BB" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
-                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "AA" },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Tuğrul Hasan Karabulut").id, openedCourseID = context.OpenedCourses.First().id },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ali Veli").id, openedCourseID = context.OpenedCourses.First().id + 1, grade = "CC" },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ali Veli").id, openedCourseID = context.OpenedCourses.First().id + 4, grade = "BB" },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 2, grade = "AA" },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Ayşe Duman").id, openedCourseID = context.OpenedCourses.First().id + 3, grade = "AA" },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Merve Soyadı").id, openedCourseID = context.OpenedCourses.First().id },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Merve Soyadı").id, openedCourseID = context.OpenedCourses.First().id + 3 },
+                new CourseRegistration { studentID = students.Single(s => s.studentName == "Tuğrul Hasan Karabulut").id, openedCourseID = context.OpenedCourses.First().id + 2, grade = "AA" },
             };
 
             courseRegistrations.ForEach(c => context.CourseRegistrations.AddOrUpdate(c));

@@ -16,15 +16,18 @@
             success: function (res) {
                 $('#takeCourseAlert').show();
                 if (res.created) {
+                    $('#takeCourseAlert').removeClass('alert-danger');
                     $('#takeCourseAlert').addClass('alert-success');
-                    $('#takeCourseAlert').text('You took the course!');
 
-                    var currentCapacity = Number($('#currentCapacity').text());
-                    $('#currentCapacity').text(currentCapacity + 1);
+                    var currentCapacityEl = $('#openedCourse-' + data.openedCourseID + ' #currentCapacity');
+                    var currentCapacity = Number(currentCapacityEl.text());
+                    currentCapacityEl.text(currentCapacity + 1);
                 } else {
+                    $('#takeCourseAlert').removeClass('alert-success');
                     $('#takeCourseAlert').addClass('alert-danger');
-                    $('#takeCourseAlert').text('You already took the course before!');
                 }
+
+                $('#takeCourseAlert').text(res.message);
 
                 setTimeout(() => {
                     $('#takeCourseAlert').hide();
@@ -32,6 +35,7 @@
             },
             error: function () {
                 $('#takeCourseAlert').show();
+                $('#takeCourseAlert').removeClass('alert-success');
                 $('#takeCourseAlert').addClass('alert-danger');
                 $('#takeCourseAlert').text('An error occurred!');
 

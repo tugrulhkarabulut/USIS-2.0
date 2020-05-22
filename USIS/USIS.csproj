@@ -121,6 +121,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\customScripts\DropCourse.js" />
     <Content Include="Scripts\customScripts\TakeCourse.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -133,6 +134,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseRegistrationsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -149,7 +151,24 @@
     <Compile Include="Migrations\202005161651361_seed.designer.cs">
       <DependentUpon>202005161651361_seed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005202354140_courses_added_year_semester_columns.cs" />
+    <Compile Include="Migrations\202005202354140_courses_added_year_semester_columns.designer.cs">
+      <DependentUpon>202005202354140_courses_added_year_semester_columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005222131328_added_logs_table.cs" />
+    <Compile Include="Migrations\202005222131328_added_logs_table.designer.cs">
+      <DependentUpon>202005222131328_added_logs_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005222142328_added_last_activity_student.cs" />
+    <Compile Include="Migrations\202005222142328_added_last_activity_student.designer.cs">
+      <DependentUpon>202005222142328_added_last_activity_student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005222226197_added_datetime_logs.cs" />
+    <Compile Include="Migrations\202005222226197_added_datetime_logs.designer.cs">
+      <DependentUpon>202005222226197_added_datetime_logs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseRegistration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -158,6 +177,9 @@
     <Compile Include="Models\OpenedCourse.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\UsisDB.cs" />
+    <Compile Include="MVCFilters\USISLastActivity.cs" />
+    <Compile Include="MVCFilters\USISLogger.cs" />
+    <Compile Include="MVCFilters\USISLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +240,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005161651361_seed.resx">
       <DependentUpon>202005161651361_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005202354140_courses_added_year_semester_columns.resx">
+      <DependentUpon>202005202354140_courses_added_year_semester_columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005222131328_added_logs_table.resx">
+      <DependentUpon>202005222131328_added_logs_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005222142328_added_last_activity_student.resx">
+      <DependentUpon>202005222142328_added_last_activity_student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005222226197_added_datetime_logs.resx">
+      <DependentUpon>202005222226197_added_datetime_logs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

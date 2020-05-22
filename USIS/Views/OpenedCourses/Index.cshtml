@@ -34,7 +34,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr id="openedCourse-@item.id">
             <td>
                 @Html.DisplayFor(modelItem => item.course.courseCode)
             </td>
@@ -52,9 +52,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.capacity)
-                <span id="#currentCapacity">
-                    (@Html.DisplayFor(model => item.courseRegistrations.Count))
-                </span>
+                (<span id="currentCapacity">@Html.DisplayFor(model => item.courseRegistrations.Count)</span>)
             </td>
             <td>
                 <a href="#" class="takeCourseBtn" data-openedCourseID="@item.id" data-studentID="@ViewBag.student.id">Take the course</a>

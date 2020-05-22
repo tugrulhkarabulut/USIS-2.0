@@ -24,5 +24,11 @@ namespace USIS.Models
         public virtual Department department { get; set; }
 
         public int departmentID { get; set; }
+
+        [DisplayName("Year")]
+        public int year { get; set; }
+
+        [DisplayName("Semester")]
+        public int semester { get; set; }
     }
 }

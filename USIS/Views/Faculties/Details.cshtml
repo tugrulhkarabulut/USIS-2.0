@@ -19,9 +19,23 @@
             @Html.DisplayFor(model => model.facultyName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.departments)
+        </dt>
+
+        <dd>
+            <ul>
+
+                @foreach (var item in Model.departments)
+                {
+                    <li>
+                        <a href="/Departments/Details/@item.id">
+                            @item.departmentName
+                        </a>
+                    </li>
+                }
+            </ul>
+        </dd>
+
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

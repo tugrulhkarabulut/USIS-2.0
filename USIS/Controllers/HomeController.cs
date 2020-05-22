@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using USIS.Models;
+using USIS.MVCFilters;
 using Vereyon.Web;
 
 namespace USIS.Controllers
@@ -14,11 +15,10 @@ namespace USIS.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
-            bool loggedIn = Request.Cookies["studentID"] != null;
-            if (loggedIn)
+            var studentID = Request.Cookies["studentID"];
+            if (studentID != null && db.Students.Find(int.Parse(studentID.Value)) != null)
             {
-                return Redirect("/Courses/Index");
+                return Redirect("/Students/Details/" + studentID.Value);
             }
 
             return View();
@@ -26,6 +26,7 @@ namespace USIS.Controllers
 
         [HttpPost]
         [Route("login")]
+        [USISLogin]
         public ActionResult Login(FormCollection collection)
         {
             int studentNumber;
@@ -37,7 +38,7 @@ namespace USIS.Controllers
                 cookie.Expires = DateTime.Now.AddDays(30);
                 HttpContext.Response.Cookies.Add(cookie);
                 return Redirect("/Courses/Index");
-            } catch (Exception err)
+            } catch
             {
                 FlashMessage.Danger("Please enter a valid student number");
                 return RedirectToAction("Index");
