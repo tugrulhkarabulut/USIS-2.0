@@ -38,13 +38,13 @@
 
             var courses = new List<Course>
             {
-                new Course { courseName = "Object Oriented Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1011", year = 2, semester = 0 },
-                new Course { courseName = "Data Communication", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2011", year = 1, semester = 1 },
-                new Course { courseName = "Algorithms and Data Structures", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2022", year = 1, semester = 0 },
-                new Course { courseName = "Calculus 1", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1012", year = 3, semester = 1 },
-                new Course { courseName = "Numerical Analysis", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2022", year = 2, semester = 1 },
-                new Course { courseName = "Electronic Circuits", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2032", year = 4, semester = 1 },
-                new Course { courseName = "Web Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2032", year = 3, semester = 0 },
+                new Course { courseName = "Object Oriented Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1011", year = 2, semester = 0, credit = 3 },
+                new Course { courseName = "Data Communication", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2011", year = 1, semester = 1, credit = 3 },
+                new Course { courseName = "Algorithms and Data Structures", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2022", year = 1, semester = 0, credit = 3 },
+                new Course { courseName = "Calculus 1", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM1012", year = 3, semester = 1, credit = 5 },
+                new Course { courseName = "Numerical Analysis", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2022", year = 2, semester = 1, credit = 3 },
+                new Course { courseName = "Electronic Circuits", departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, courseCode = "BLM2032", year = 4, semester = 1, credit = 3 },
+                new Course { courseName = "Web Programming", departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, courseCode = "MTM2032", year = 3, semester = 0, credit = 3 },
 
             };
 

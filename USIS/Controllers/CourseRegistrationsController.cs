@@ -19,8 +19,11 @@ namespace USIS.Controllers
         {
             int studentID = int.Parse(Request.Cookies["studentID"].Value);
             Student student = db.Students.Find(studentID);
-            ViewBag.student = student;
             var studentCourseRegistrations = db.CourseRegistrations.Where(r => r.studentID == studentID);
+
+            ViewBag.student = student;
+            ViewBag.totalCredits = studentCourseRegistrations.Where(cr => cr.grade != null).Sum(cr => cr.openedCourse.course.credit);
+            ViewBag.departmentTotalCredits = student.department.courses.Sum(c => c.credit);
             return View(studentCourseRegistrations.ToList());
         }
 

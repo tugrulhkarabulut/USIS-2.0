@@ -30,5 +30,8 @@ namespace USIS.Models
 
         [DisplayName("Semester")]
         public int semester { get; set; }
+
+        [DisplayName("Credit")]
+        public int credit { get; set; }
     }
 }

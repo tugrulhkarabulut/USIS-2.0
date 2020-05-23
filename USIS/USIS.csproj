@@ -167,6 +167,10 @@
     <Compile Include="Migrations\202005222226197_added_datetime_logs.designer.cs">
       <DependentUpon>202005222226197_added_datetime_logs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005230050360_added_credit_column.cs" />
+    <Compile Include="Migrations\202005230050360_added_credit_column.designer.cs">
+      <DependentUpon>202005230050360_added_credit_column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Course.cs" />
@@ -252,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005222226197_added_datetime_logs.resx">
       <DependentUpon>202005222226197_added_datetime_logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005230050360_added_credit_column.resx">
+      <DependentUpon>202005230050360_added_credit_column.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

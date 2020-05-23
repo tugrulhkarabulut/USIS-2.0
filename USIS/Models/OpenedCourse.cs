@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -25,8 +26,10 @@ namespace USIS.Models
 
         public virtual List<CourseRegistration> courseRegistrations { get; set; }
     
+        [DisplayName("Year")]
         public int year { get; set; }
 
+        [DisplayName("Semester")]
         public string semester { get; set; }
 
         public int capacity { get; set; }

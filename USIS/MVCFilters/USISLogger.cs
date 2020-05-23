@@ -17,7 +17,7 @@ namespace USIS.MVCFilters
             var controller = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             var actionName = filterContext.ActionDescriptor.ActionName;
 
-            var message = $"{actionName} executed on {controller}";
+            var message = $"{actionName} executed on {controller}Controller";
 
             db.Logs.Add(new Log { message = message, type = "Info", dateTime = DateTime.Now });
             db.SaveChanges();
@@ -29,7 +29,7 @@ namespace USIS.MVCFilters
             var controller = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             var actionName = filterContext.ActionDescriptor.ActionName;
 
-            var message = $"Executing {actionName} on {controller}...";
+            var message = $"Executing {actionName} on {controller}Controller...";
 
             db.Logs.Add(new Log { message = message, type = "Info", dateTime = DateTime.Now });
             db.SaveChanges();

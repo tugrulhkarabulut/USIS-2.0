@@ -5,18 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Taken Courses</h2>
+
+
 
 <div class="alert" id="dropCourseAlert">
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>Total Completed Credits: @ViewBag.totalCredits / @ViewBag.departmentTotalCredits</div>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.openedCourse.course.courseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.course.credit)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.openedCourse.course.courseName)
@@ -27,31 +35,46 @@
         <th>
             @Html.DisplayNameFor(model => model.openedCourse.lecturer.lecturerName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openedCourse.semester)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr id="registration-@item.id">
-            <td>
-                @Html.DisplayFor(modelItem => item.openedCourse.course.courseCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.openedCourse.course.courseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.grade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.openedCourse.lecturer.lecturerName)
-            </td>
-            <td>
-                @if (item.grade == null)
-                {
-                    <button class="btn btn-secondary dropCourseBtn" data-courseRegistrationID="@item.id">Drop the Course</button>
-                }
-            </td>
-        </tr>
+    <tr id="registration-@item.id">
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.course.courseCode)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.openedCourse.course.credit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.course.courseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.lecturer.lecturerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openedCourse.semester)
+        </td>
+        <td>
+            @if (item.grade == null)
+            {
+                <button class="btn btn-secondary dropCourseBtn" data-courseRegistrationID="@item.id">Drop the Course</button>
+            }
+        </td>
+    </tr>
     }
 
 </table>

@@ -22,5 +22,7 @@ namespace USIS.Models
 
         [DisplayName("Department Name")]
         public string departmentName { get; set; }
+
+        public virtual List<Course> courses { get; set; }
     }
 }
