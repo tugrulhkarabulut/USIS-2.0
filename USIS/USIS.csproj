@@ -147,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EmailSender.cs" />
     <Compile Include="Migrations\202005161651361_seed.cs" />
     <Compile Include="Migrations\202005161651361_seed.designer.cs">
       <DependentUpon>202005161651361_seed.cs</DependentUpon>
@@ -170,6 +171,10 @@
     <Compile Include="Migrations\202005230050360_added_credit_column.cs" />
     <Compile Include="Migrations\202005230050360_added_credit_column.designer.cs">
       <DependentUpon>202005230050360_added_credit_column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005231333021_added_email_students.cs" />
+    <Compile Include="Migrations\202005231333021_added_email_students.designer.cs">
+      <DependentUpon>202005231333021_added_email_students.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
@@ -259,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005230050360_added_credit_column.resx">
       <DependentUpon>202005230050360_added_credit_column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231333021_added_email_students.resx">
+      <DependentUpon>202005231333021_added_email_students.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

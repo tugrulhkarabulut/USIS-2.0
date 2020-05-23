@@ -49,6 +49,9 @@ namespace USIS.Controllers
 
             db.CourseRegistrations.Add(new CourseRegistration { studentID = studentID, openedCourseID = openedCourseID });
             db.SaveChanges();
+
+            Helpers.SendEmail(db.Students.Find(studentID).email, "Course Registration", $"You took the {openedCourse.course.courseName} from {openedCourse.lecturer.lecturerName}.");
+
             return Json(new { created = true, message = "You took the course!" });
         }
 

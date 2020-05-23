@@ -36,6 +36,8 @@ namespace USIS.Models
 
         public DateTime lastActivity { get; set; }
 
+        public string email { get; set; }
+
 
     }
 }
