@@ -33,5 +33,7 @@ namespace USIS.Models
 
         [DisplayName("Credit")]
         public int credit { get; set; }
+
+        public virtual List<OpenedCourse> openedCourses { get; set; }
     }
 }

@@ -5,36 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Curriculums</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.courseCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departmentID)
-        </th>
-        <th></th>
-    </tr>
+<div id="app" class="container">
+    <form method="get" action="/">
+        @Html.DropDownList("id", (SelectList)ViewBag.DepartmentSelectList, "Select A Department", new { @class = "form-control", @id = "departmentSelectList" })
+    </form>
+    <div v-if="courses.length">
+        <div v-for="year in [1, 2, 3, 4]">
+            <div v-for="semester in [0, 1]" class="courses-semester-info">
+                <h5>Year {{ year }} - Semester {{ semester }}</h5>
+                <table class="table table-hover table-striped curriculum-table">
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Credit</th>
+                        <th>Course Name</th>
+                        <th>Year</th>
+                        <th>Semester</th>
+                    </tr>
+                    <tr v-for="course in courses.filter(c => c.year === year && c.semester == semester)">
+                        <td>{{ course.courseCode }}</td>
+                        <td>{{ course.credit }}</td>
+                        <td>{{ course.courseName }}</td>
+                        <td>{{ course.year }}</td>
+                        <td>{{ course.semester === 0 ? 'Autumn' : 'Spring' }}</td>
+                    </tr>
+                </table>
+                <div class="clearfix">
+                    <span class="pull-right">Total: {{ calculateTotalCredits(year, semester) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else>
+        <p class="lead text-center">Please select a department to view the courses</p>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.courseCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departmentID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+@section Scripts
+{
+    @Scripts.Render("/Scripts/vue.min.js");
+    @Scripts.Render("/Scripts/customScripts/CurriculumsVue.js");
 }
-
-</table>

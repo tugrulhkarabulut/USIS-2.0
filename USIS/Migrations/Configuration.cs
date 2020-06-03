@@ -66,7 +66,7 @@
                 new Student { studentNumber = 17058055, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2017, gpa = 3.49, studentName = "Tuğrul Hasan Karabulut", lastActivity = DateTime.Now, email = "tugrulkarabulut64@gmail.com" },
                 new Student { studentNumber = 16012001, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2016, gpa = 3.70, studentName = "Ayşe Duman", lastActivity = DateTime.Now, email = "test@test.com" },
                 new Student { studentNumber = 14022001, departmentID = departments.Single(d => d.departmentName == "Computer Engineering").id, startYear = 2014, gpa = 2.54, studentName = "Ali Veli", lastActivity = DateTime.Now, email = "test@test.com" },
-                new Student { studentNumber = 18002009, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2018, gpa = 3.12, studentName = "Merve Soyadı", lastActivity = DateTime.Now, email = "test@test.com" },
+                new Student { studentNumber = 18002009, departmentID = departments.Single(d => d.departmentName == "Mathematical Engineering").id, startYear = 2018, gpa = 3.12, studentName = "Merve Soyadı", lastActivity = DateTime.Now, email = "test@test.com" }
             };
 
             students.ForEach(d => context.Students.AddOrUpdate(d));
